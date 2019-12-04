@@ -19,12 +19,12 @@ import com.nslb.membermanagement.member.RegularMember;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, ManagementListener{
 
     private String member = null;
+    private Button[] btnArray = null;
 
     private String regular = "일반회원";
     private String general = "정회원";
     private String manager = "관리자";
 
-    private Button mBtnLogin, mBtnWriting, mBtnDelete, mBtnReading, mBtnManage;
     private EditText mEditLogin, mEditShow;
 
     private Writing writing = new Writing();
@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-
             case R.id.btn_login :
                 logindecide();
                 break;
@@ -73,27 +72,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onLogin(boolean writing, boolean reading, boolean delete, boolean manage) {
-        mBtnWriting.setEnabled(writing);
-        mBtnReading.setEnabled(reading);
-        mBtnDelete.setEnabled(delete);
-        mBtnManage.setEnabled(manage);
+        btnArray[1].setEnabled(writing);
+        btnArray[2].setEnabled(reading);
+        btnArray[3].setEnabled(delete);
+        btnArray[4].setEnabled(manage);
     }
     private void inintGUI()
     {
-        mBtnLogin = (Button)findViewById(R.id.btn_login);
-        mBtnReading = (Button)findViewById(R.id.btn_reading);
-        mBtnManage = (Button)findViewById(R.id.btn_manage);
-        mBtnWriting = (Button)findViewById(R.id.btn_writing);
-        mBtnDelete = (Button)findViewById(R.id.btn_delete);
+        btnArray = new Button [6];
+        int[] btnId = {R.id.btn_login, R.id.btn_writing, R.id.btn_reading, R.id.btn_delete, R.id.btn_manage};
+        for(int i =0; i<5; i++){
+            btnArray[i] = (Button) findViewById(btnId[i]);
+            btnArray[i].setOnClickListener(this);
+        }
 
         mEditLogin = (EditText)findViewById(R.id.edit_login);
         mEditShow = (EditText)findViewById(R.id.edit_show);
-
-        mBtnLogin.setOnClickListener(this);
-        mBtnReading.setOnClickListener(this);
-        mBtnManage.setOnClickListener(this);
-        mBtnWriting.setOnClickListener(this);
-        mBtnDelete.setOnClickListener(this);
 
         writing.onManagementListener(this);
         reading.onManagementListener(this);
@@ -120,6 +114,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else {
             Toast.makeText(this, "회원이 아닙니다.", Toast.LENGTH_SHORT).show();
         }
-
     }
 }
