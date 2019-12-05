@@ -14,7 +14,4 @@ public class Management {
     public void onManagementListener(ManagementListener listener){
         this.managementListener = listener;
     }
-
-
-
 }

@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private String general = "정회원";
     private String manager = "관리자";
 
+    private int[] btnId = {R.id.btn_login, R.id.btn_writing, R.id.btn_reading, R.id.btn_delete, R.id.btn_manage};
+
     private EditText mEditLogin, mEditShow;
 
     private Writing writing = new Writing();
@@ -80,11 +82,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void inintGUI()
     {
         btnArray = new Button [6];
-        int[] btnId = {R.id.btn_login, R.id.btn_writing, R.id.btn_reading, R.id.btn_delete, R.id.btn_manage};
         for(int i =0; i<5; i++){
             btnArray[i] = (Button) findViewById(btnId[i]);
             btnArray[i].setOnClickListener(this);
         }
+
 
         mEditLogin = (EditText)findViewById(R.id.edit_login);
         mEditShow = (EditText)findViewById(R.id.edit_show);

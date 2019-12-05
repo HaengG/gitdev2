@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Member Management</string>
+
+    <string name="regularmember">일반회원</string>
+    <string name="generalmember">정회원</string>
+    <string name="manager">관리자</string>
+
+    <string name="Delete">삭제</string>
+    <string name="Manage">관리</string>
+    <string name="Reading">읽기</string>
+    <string name="Writing">쓰기</string>
 </resources>
